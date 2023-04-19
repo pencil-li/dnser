@@ -1,0 +1,38 @@
+{
+  "name": "dnser",
+  "version": "1.0.0",
+  "description": "Dnser is a package for working with top-level domains.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "npx jest --config jest.config.js --colors",
+    "start": "node lib/server.js",
+    "clean": "rm -rf lib",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "dns",
+    "tld",
+    "ICANN",
+    "top-level",
+    "hns",
+    "handshake",
+    "ens",
+    "ethereum",
+    "name",
+    "names",
+    "domain"
+  ],
+  "author": "Pencil Domains <it@pencil.domains",
+  "license": "Pylar AI creative ML license",
+  "dependencies": {
+    "@types/express": "^4.17.17",
+    "express": "^4.18.2",
+    "typescript": "^5.0.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.1",
+    "ts-jest": "^29.1.0"
+  }
+}
