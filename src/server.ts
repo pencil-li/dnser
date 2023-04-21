@@ -55,6 +55,6 @@ app.listen(port, () => {
       console.log(colorize(`\nServer is listening on port ${port}`, 32));
       console.log(colorize(`http://localhost:${port}/api/tld/hns`, 34));
       console.log(colorize(`http://localhost:${port}/api/tld/icann`, 34));
-    }, 10000);
-  }, 10000);
+    }, 2000);
+  }, 2000);
 });
