@@ -15,30 +15,23 @@ app.get("/api/tld/:tldType", (req, res) => {
   }
 });
 
-const colorize = (text: string, code: number): string =>
-  `\u001b[${code}m${text}\u001b[0m`;
+const colorize = (text: string, code: number): string => `\u001b[${code}m${text}\u001b[0m`;
 
-const createRoundedBox = (
-  text: string,
-  width: number,
-  height: number
-): string => {
-  const horizontal = "─".repeat(width - 2);
-  const vertical = "│";
+const createRoundedBox = (text: string, width: number, height: number): string => {
+  const horizontal = '─'.repeat(width - 2);
+  const vertical = '│';
 
   const top = `╭${horizontal}╮`;
-  const middle = `${vertical}${" ".repeat(width - 2)}${vertical}`;
+  const middle = `${vertical}${' '.repeat(width - 2)}${vertical}`;
   const bottom = `╰${horizontal}╯`;
 
-  let box = top + "\n";
+  let box = top + '\n';
   for (let i = 0; i < height - 2; i++) {
     if (i === Math.floor((height - 2) / 2)) {
       const textStart = Math.floor((width - text.length) / 2);
-      box += `${vertical}${" ".repeat(textStart)}${text}${" ".repeat(
-        width - text.length - textStart - 2
-      )}${vertical}\n`;
+      box += `${vertical}${' '.repeat(textStart)}${text}${' '.repeat(width - text.length - textStart - 2)}${vertical}\n`;
     } else {
-      box += middle + "\n";
+      box += middle + '\n';
     }
   }
   box += bottom;
@@ -46,12 +39,28 @@ const createRoundedBox = (
   return box;
 };
 
-const clearConsole = () => process.stdout.write("\x1Bc");
+const clearConsole = () => process.stdout.write('\x1Bc');
 
-const printBubble = () => {
-  console.log(colorize("   O", 34));
-  console.log(colorize("  /|\\", 34));
-  console.log(colorize("  / \\", 34));
+const sentences = [
+  "Installing Dependencies!",
+  "Loading Server!",
+  "Deploying server!",
+];
+
+let characterFrame = 0;
+
+const printCharacter = (sentence: string) => {
+  const frames = [
+    [' O', ' /|\\', ' / \\'],
+    [' O', ' /|\\', '/ \\'],
+    [' O', '/|\\', ' / \\'],
+  ];
+
+  const currentFrame = frames[characterFrame % frames.length];
+
+  currentFrame.forEach((line) => console.log(colorize(line, 34)));
+
+  console.log(colorize(createRoundedBox(sentence, sentence.length + 4, 3), 36));
 };
 
 const printLoadingBar = (color: number) => {
@@ -66,14 +75,19 @@ app.listen(port, () => {
 
   let loadingAnimation: NodeJS.Timeout;
   let color = 31;
+  let sentenceIndex = 0;
 
   const startLoadingAnimation = () => {
     loadingAnimation = setInterval(() => {
       clearConsole();
-      printBubble();
+      printCharacter(sentences[sentenceIndex % sentences.length]);
       printLoadingBar(color);
 
       color = color === 37 ? 31 : color + 1;
+      characterFrame++;
+      if (characterFrame % 5 === 0) {
+        sentenceIndex++;
+      }
     }, 500);
   };
 
@@ -86,10 +100,8 @@ app.listen(port, () => {
   setTimeout(() => {
     stopLoadingAnimation();
     clearConsole();
-    printBubble();
-    console.log(
-      colorize(createRoundedBox("Fun staff loaded and ready!", 30, 5), 33)
-    );
+    printCharacter(sentences[sentences.length - 1]);
+    console.log(colorize(createRoundedBox("Server Deployed!", 30, 5), 33));
 
     setTimeout(() => {
       clearConsole();
