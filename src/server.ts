@@ -17,4 +17,6 @@ app.get("/api/tld/:tldType", (req, res) => {
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
+  console.log(`Try http://localhost:${port}/api/tld/hns`);
+  console.log(`Try http://localhost:${port}/api/tld/icann`);
 });
