@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
     "repository": {
-      "type": "npm",
+      "type": "git",
       "url": "https://npmjs.com/package/dnser",
       "directory": "packages/dnser"
     },
