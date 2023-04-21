@@ -3,8 +3,3 @@ test
 do.sh
 lib
 package-lock.json
-lib/index.d.ts
-lib/index.js
-lib/server.d.ts
-lib/server.js
-lib/tlds.json
