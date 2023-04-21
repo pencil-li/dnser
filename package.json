@@ -4,11 +4,7 @@
   "description": "Dnser is a package for working with top-level domains.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-    "repository": {
-      "type": "git",
-      "url": "https://npmjs.com/package/dnser",
-      "directory": "packages/dnser"
-    },
+    "repository": "npm/dnser",
 "scripts": {
   "build": "tsc",
   "test": "npx jest --config jest.config.js --colors",
