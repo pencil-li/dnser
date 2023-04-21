@@ -1,1 +1,10 @@
 node_modules
+src
+test
+do.sh
+package-lock.json
+lib/index.d.ts
+lib/index.js
+lib/server.d.ts
+lib/server.js
+lib/tlds.json
