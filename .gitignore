@@ -4,3 +4,4 @@ test
 do.sh
 lib
 Info.md
+.npmignore
