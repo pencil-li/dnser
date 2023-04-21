@@ -1,6 +1,6 @@
 {
   "name": "dnser",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Dnser is a package for working with top-level domains.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -8,7 +8,12 @@
     "build": "tsc",
     "test": "npx jest --config jest.config.js --colors",
     "start": "node lib/server.js",
-    "clean": "node_modules lib/index.d.ts lib/index.js lib/server.js lib/server.d.ts lib/tlds.js",
+    "clean": "rm -r node_modules package-lock.json lib/index.d.ts lib/index.js lib/server.js lib/server.d.ts lib/tlds.json",
+    "nclean": "rm -r node_modules",
+    "jclean": "rm -r package-lock.json",
+    "cinstall": "npm run clean && npm install",
+    "cbuild": "npm run clean-install && npm run build",
+    "ctest": "npm run clean-install && npm run build && npm run test",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
