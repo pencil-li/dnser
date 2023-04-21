@@ -48,11 +48,12 @@ app.listen(port, () => {
 
   setTimeout(() => {
     clearConsole();
-    console.log(colorize(createRoundedBox("Fun staff loaded and ready!", 30, 5), 33));
+    console.log(colorize(createRoundedBox("Server is ready!", 30, 5), 32));
 
     setTimeout(() => {
       clearConsole();
       console.log(colorize(`\nServer is listening on port ${port}`, 32));
+      console.log(colorize(`\nAvailable endpoints:\n`, 32));
       console.log(colorize(`http://localhost:${port}/api/tld/hns`, 34));
       console.log(colorize(`http://localhost:${port}/api/tld/icann`, 34));
     }, 2000);
