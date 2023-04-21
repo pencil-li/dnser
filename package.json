@@ -44,5 +44,8 @@
   "devDependencies": {
     "@types/jest": "^29.5.1",
     "ts-jest": "^29.1.0"
+  },
+  "bugs": {
+    "url": "https://github.com/Pencil-li/dnser/issues"
   }
 }
