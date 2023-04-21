@@ -4,6 +4,7 @@
   "description": "Dnser is a package for working with top-level domains.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "homepage": "https://dnser.pencil.li",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Pencil-li/dnser.git"
