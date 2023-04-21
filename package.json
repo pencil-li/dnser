@@ -8,7 +8,7 @@
     "build": "tsc",
     "test": "npx jest --config jest.config.js --colors",
     "start": "node lib/server.js",
-    "clean": "rm -rf lib",
+    "clean": "node_modules lib/index.d.ts lib/index.js lib/server.js lib/server.d.ts lib/tlds.js",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
@@ -31,7 +31,7 @@
     "express": "^4.18.2",
     "typescript": "^5.0.4"
   },
-  "repository":"https://github.com/Pencil-li/dnser/",
+  "repository": "https://github.com/Pencil-li/dnser/",
   "devDependencies": {
     "@types/jest": "^29.5.1",
     "ts-jest": "^29.1.0"

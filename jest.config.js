@@ -1,12 +1,12 @@
 module.exports = {
   transform: {
-    '^.+\\.ts$': 'ts-jest',
+    "^.+\\.ts$": "ts-jest",
   },
-  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.ts$',
-  moduleFileExtensions: ['ts', 'js', 'json'],
+  testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.ts$",
+  moduleFileExtensions: ["ts", "js", "json"],
   globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.test.json',
+    "ts-jest": {
+      tsconfig: "tsconfig.test.json",
     },
   },
 };
