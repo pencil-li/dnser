@@ -1,21 +1,20 @@
 # Security Policy
 
-## Supported Versions
-
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+## Node Supported Versions
 
 | Version | Supported          |
 | ------- | ------------------ |
-| Coolify   | :white_check_mark: |
-| Docker   | :white_check_mark: |
 | v18.16.0   | :white_check_mark: |
 | v18.15.0   | :white_check_mark: |
 
-## Reporting a Vulnerability
+## Coolify Supported Version
 
-Use this section to tell people how to report a vulnerability.
+| Version | Supported          |
+| ------- | ------------------ |
+| Coolify v3.12.31 | :white_check_mark: |
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+## Docker Supported Version
+
+| Version | Supported          |
+| ------- | ------------------ |
+| Docker version 20.10.23, build 7155243   | :white_check_mark: |
