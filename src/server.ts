@@ -15,23 +15,30 @@ app.get("/api/tld/:tldType", (req, res) => {
   }
 });
 
-const colorize = (text: string, code: number): string => `\u001b[${code}m${text}\u001b[0m`;
+const colorize = (text: string, code: number): string =>
+  `\u001b[${code}m${text}\u001b[0m`;
 
-const createRoundedBox = (text: string, width: number, height: number): string => {
-  const horizontal = '─'.repeat(width - 2);
-  const vertical = '│';
+const createRoundedBox = (
+  text: string,
+  width: number,
+  height: number
+): string => {
+  const horizontal = "─".repeat(width - 2);
+  const vertical = "│";
 
   const top = `╭${horizontal}╮`;
-  const middle = `${vertical}${' '.repeat(width - 2)}${vertical}`;
+  const middle = `${vertical}${" ".repeat(width - 2)}${vertical}`;
   const bottom = `╰${horizontal}╯`;
 
-  let box = top + '\n';
+  let box = top + "\n";
   for (let i = 0; i < height - 2; i++) {
     if (i === Math.floor((height - 2) / 2)) {
       const textStart = Math.floor((width - text.length) / 2);
-      box += `${vertical}${' '.repeat(textStart)}${text}${' '.repeat(width - text.length - textStart - 2)}${vertical}\n`;
+      box += `${vertical}${" ".repeat(textStart)}${text}${" ".repeat(
+        width - text.length - textStart - 2
+      )}${vertical}\n`;
     } else {
-      box += middle + '\n';
+      box += middle + "\n";
     }
   }
   box += bottom;
@@ -39,7 +46,7 @@ const createRoundedBox = (text: string, width: number, height: number): string =
   return box;
 };
 
-const clearConsole = () => process.stdout.write('\x1Bc');
+const clearConsole = () => process.stdout.write("\x1Bc");
 
 const printBubble = () => {
   console.log(colorize("   O", 34));
@@ -80,7 +87,9 @@ app.listen(port, () => {
     stopLoadingAnimation();
     clearConsole();
     printBubble();
-    console.log(colorize(createRoundedBox("Fun staff loaded and ready!", 30, 5), 33));
+    console.log(
+      colorize(createRoundedBox("Fun staff loaded and ready!", 30, 5), 33)
+    );
 
     setTimeout(() => {
       clearConsole();
