@@ -41,21 +41,52 @@ const createRoundedBox = (text: string, width: number, height: number): string =
 
 const clearConsole = () => process.stdout.write('\x1Bc');
 
+const printBubble = () => {
+  console.log(colorize("   O", 34));
+  console.log(colorize("  /|\\", 34));
+  console.log(colorize("  / \\", 34));
+};
+
+const printLoadingBar = (color: number) => {
+  const bar = "█".repeat(20);
+  console.log(colorize(bar, color));
+};
+
 app.listen(port, () => {
   clearConsole();
   console.log(colorize(createRoundedBox("Welcome to the server!", 30, 5), 36));
   console.log("Loading...");
 
+  let loadingAnimation: NodeJS.Timeout;
+  let color = 31;
+
+  const startLoadingAnimation = () => {
+    loadingAnimation = setInterval(() => {
+      clearConsole();
+      printBubble();
+      printLoadingBar(color);
+
+      color = color === 37 ? 31 : color + 1;
+    }, 500);
+  };
+
+  const stopLoadingAnimation = () => {
+    clearInterval(loadingAnimation);
+  };
+
+  startLoadingAnimation();
+
   setTimeout(() => {
+    stopLoadingAnimation();
     clearConsole();
-    console.log(colorize(createRoundedBox("Server is ready!", 30, 5), 32));
+    printBubble();
+    console.log(colorize(createRoundedBox("Fun staff loaded and ready!", 30, 5), 33));
 
     setTimeout(() => {
       clearConsole();
       console.log(colorize(`\nServer is listening on port ${port}`, 32));
-      console.log(colorize(`\nAvailable endpoints:\n`, 32));
       console.log(colorize(`http://localhost:${port}/api/tld/hns`, 34));
       console.log(colorize(`http://localhost:${port}/api/tld/icann`, 34));
-    }, 2000);
-  }, 2000);
+    }, 3000);
+  }, 3000);
 });
