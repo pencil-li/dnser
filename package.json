@@ -5,9 +5,9 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/pencil-li/dnser.git"
-  },
+    "type": "npm",
+    "url": "https://npmjs.com/package/dnser"
+    },
   "scripts": {
     "build": "tsc",
     "test": "npx jest --config jest.config.js --colors",
