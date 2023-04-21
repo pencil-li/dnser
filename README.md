@@ -1,6 +1,21 @@
-# dnser
+# DNSer
+List for resolver any TLDs from Handshake to ICANN, now with the official Pencil Domains API.
 
-dnser is a node module that allows you to resolve any Handshake and ICANN domain name to a Handshake address. It uses the [Handshake blockchain](https://handshake.org) to resolve Handshake domains and the [Namebase API](https://namebase.io) to resolve ICANN domains.
+## API Live
+
+ - [ICANN](https://api-dnser.pencil.li/api/tld/icann)
+ - [HNS](https://api-dnser.pencil.li/api/tld/hns)
+
+## About the API
+dnser is a library that allows you to list any TLDs from Handshake to ICANN, also you can use it as an API to get the information of any TLD and resolve it.
+
+  - **ICANN** traditional compatible TLDs.
+  - **Handshake** decentralization compatible TLDs.
+  - Start from reading the [**Introduction**](https://dnser.pencil.li/introduction/getting-started)
+  - Play with the API and see the [**API**](https://dnser.pencil.li)
+  - Fully accessed from npmjs.
+  - Developed with ```typescript``` and ```javascript``` for better performance.
+
 
 ## Installation
 
