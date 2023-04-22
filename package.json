@@ -14,7 +14,7 @@
     "play": "npm i && npm run build && node lib/server.js",
     "test": "npx jest --config jest.config.js --colors",
     "start": "node lib/server.js",
-    "clean": "rm -r node_modules package-lock.json lib/index.d.ts lib/index.js lib/server.js lib/server.d.ts lib/tlds.json",
+    "clean": "rm -r node_modules package-lock.json lib/*",
     "nclean": "rm -r node_modules",
     "jclean": "rm -r package-lock.json",
     "cinstall": "npm run clean && npm install",
