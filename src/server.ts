@@ -63,16 +63,23 @@ const printCharacter = (sentence: string) => {
   console.log(colorize(createRoundedBox(sentence, sentence.length + 4, 3), 36));
 };
 
-const printLoadingBar = (offset: number) => {
+const printLoadingBar = (offset: number, progress: number) => {
   const colors = [31, 33, 32, 36, 34, 35];
   const barLength = 20;
+  const filledLength = Math.floor(barLength * progress);
+
   const bar = Array(barLength)
-    .fill("█")
-    .map((char, index) => colorize(char, colors[(index + offset) % colors.length]))
+    .fill(" ")
+    .map((char, index) => {
+      if (index < filledLength) {
+        return colorize("█", colors[(index + offset) % colors.length]);
+      }
+      return char;
+    })
     .join("");
+
   console.log(bar);
 };
-
 
 app.listen(port, () => {
   clearConsole();
@@ -84,15 +91,21 @@ app.listen(port, () => {
   let sentenceIndex = 0;
 
   const startLoadingAnimation = () => {
+    let progress = 0;
     loadingAnimation = setInterval(() => {
       clearConsole();
       printCharacter(sentences[sentenceIndex % sentences.length]);
-      printLoadingBar(color);
-
+      printLoadingBar(color, progress);
+  
       color = color === 37 ? 31 : color + 1;
       characterFrame++;
       if (characterFrame % 5 === 0) {
         sentenceIndex++;
+      }
+  
+      progress += 0.05; // Adjust the increment for faster or slower progress
+      if (progress > 1) {
+        progress = 1;
       }
     }, 500);
   };
@@ -115,5 +128,5 @@ app.listen(port, () => {
       console.log(colorize(`http://localhost:${port}/api/tld/hns`, 34));
       console.log(colorize(`http://localhost:${port}/api/tld/icann`, 34));
     }, 3000);
-  }, 3000);
+  }, 6000);
 });
