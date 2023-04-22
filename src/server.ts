@@ -88,5 +88,6 @@ app.listen(port, () => {
   console.log(`http://localhost:${port}/api/tld/icann`);
   console.log(`http://localhost:${port}/api/dns/hns`);
   console.log(`http://localhost:${port}/api/dns/icann`);
-  console.log(`http://localhost:${port}/api/domain/availability?domain=example`); // Added example domain availability endpoint
+  console.log(`http://localhost:${port}/api/domain/availability?domain=miguelgargallo`);
+  console.log(`http://localhost:${port}/api/hns/domain/miguelgargallo`);
 });
