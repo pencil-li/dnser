@@ -6,6 +6,20 @@ List for resolver any TLDs from Handshake to ICANN, now with the official Pencil
 
 Thanks to public DNS resolvers, you can fetch any TLD from Handshake at lightspeed, and you can use it as an API to get the information of any TLD and resolve it.
 
+## Where to discover the API
+
+### NPM
+
+ - https://www.npmjs.com/package/dnser
+
+### Docker
+
+ - https://hub.docker.com/r/itamaesan/dnser
+
+### GitHub
+
+ - https://github.com/Pencil-li/dnser
+
 ## Play with the API
 
 ### Fetch any TLD from HNS
