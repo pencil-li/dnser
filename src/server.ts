@@ -62,10 +62,8 @@ app.get("/api/domain/availability", async (req, res) => {
     await fetchHnsDomainData(domain);
   } catch (error) {
     if (error instanceof Error) {
-      // If the error is related to fetching HNS domain data, set the HNS availability to false
-      if (!isIcannTld) {
-        hnsAvailable = true;
-      }
+      // If the error is related to fetching HNS domain data, set the HNS availability to true if the domain is not in ICANN
+      hnsAvailable = !isIcannTld;
     } else {
       res.status(500).json({ error: "Error fetching HNS domain data" });
       return;
