@@ -35,7 +35,7 @@ app.get("/api/dns/:dnsType", (req, res) => {
 });
 
 // Updated endpoint for checking domain availability
-app.get("/api/domain/availability", (req, res) => {
+app.get("/api/domain/availability", async (req, res) => {
   const domain = req.query.domain?.toString().toLowerCase();
 
   if (!domain) {
@@ -55,7 +55,22 @@ app.get("/api/domain/availability", (req, res) => {
 
   // Check domain availability in both ecosystems
   const icannAvailable = !isIcannTld && mockDomainAvailability(domain);
-  const hnsAvailable = mockDomainAvailability(domain);
+
+  let hnsAvailable = false;
+  try {
+    // Fetch the HNS domain data
+    await fetchHnsDomainData(domain);
+  } catch (error) {
+    if (error instanceof Error) {
+      // If the error is related to fetching HNS domain data, set the HNS availability to false
+      if (!isIcannTld) {
+        hnsAvailable = true;
+      }
+    } else {
+      res.status(500).json({ error: "Error fetching HNS domain data" });
+      return;
+    }
+  }
 
   res.json({
     ICANN: { domain, available: icannAvailable },
@@ -81,13 +96,14 @@ app.get("/api/hns/domain/:name", async (req, res) => {
   }
 });
 
-
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
   console.log(`http://localhost:${port}/api/tld/hns`);
   console.log(`http://localhost:${port}/api/tld/icann`);
   console.log(`http://localhost:${port}/api/dns/hns`);
   console.log(`http://localhost:${port}/api/dns/icann`);
-  console.log(`http://localhost:${port}/api/domain/availability?domain=miguelgargallo`);
+  console.log(
+    `http://localhost:${port}/api/domain/availability?domain=miguelgargallo`
+  );
   console.log(`http://localhost:${port}/api/hns/domain/miguelgargallo`);
 });
