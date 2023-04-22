@@ -11,11 +11,12 @@
   },
   "scripts": {
     "build": "tsc",
-    "play": "npm i && npm run build && node lib/server.js",
+    "play": "npm install && tsc && npx jest --config jest.config.js --colors && node lib/server.js",
     "test": "npx jest --config jest.config.js --colors",
     "start": "node lib/server.js",
     "clean": "rm -r node_modules package-lock.json lib/*",
-    "prepublishOnly": "npm run build"
+    "do": "clear && npm install && clear && tsc && clear && node lib/server.js",
+    "prepublishOnly": "tsc"
   },
   "keywords": [
     "dns",
