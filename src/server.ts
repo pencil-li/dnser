@@ -2,6 +2,7 @@ import express from "express";
 import { getTldInfo } from "./index";
 import { getDnsServers } from "./dns";
 import { mockDomainAvailability } from "./mockDomainAvailability";
+import { fetchHnsDomainData } from "./fetch"; // Import the fetchHnsDomainData function
 
 const app = express();
 const port = process.env.PORT || 3003;
@@ -61,6 +62,25 @@ app.get("/api/domain/availability", (req, res) => {
     HNS: { domain, available: hnsAvailable },
   });
 });
+
+// Updated HNS domain data endpoint
+app.get("/api/hns/domain/:name", async (req, res) => {
+  const name = req.params.name.toLowerCase();
+
+  try {
+    // Use the fetchHnsDomainData function
+    const hnsDomainData = await fetchHnsDomainData(name);
+
+    res.json(hnsDomainData);
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(500).json({ error: error.message });
+    } else {
+      res.status(500).json({ error: "Error fetching HNS domain data" });
+    }
+  }
+});
+
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
