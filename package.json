@@ -15,11 +15,6 @@
     "test": "npx jest --config jest.config.js --colors",
     "start": "node lib/server.js",
     "clean": "rm -r node_modules package-lock.json lib/*",
-    "nclean": "rm -r node_modules",
-    "jclean": "rm -r package-lock.json",
-    "cinstall": "npm run clean && npm install",
-    "cbuild": "npm run clean-install && npm run build",
-    "ctest": "npm run clean-install && npm run build && npm run test",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
