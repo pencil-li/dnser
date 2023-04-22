@@ -2,7 +2,7 @@ import express from "express";
 import { getTldInfo } from "./index";
 import { getDnsServers } from "./dns";
 import { mockDomainAvailability } from "./mockDomainAvailability";
-import { fetchHnsDomainData } from "./fetch"; // Import the fetchHnsDomainData function
+import { fetchHnsDomainData } from "./fetch";
 
 const app = express();
 const port = process.env.PORT || 3003;
@@ -34,7 +34,6 @@ app.get("/api/dns/:dnsType", (req, res) => {
   }
 });
 
-// Updated endpoint for checking domain availability
 app.get("/api/domain/availability", async (req, res) => {
   const domain = req.query.domain?.toString().toLowerCase();
 
@@ -43,26 +42,20 @@ app.get("/api/domain/availability", async (req, res) => {
     return;
   }
 
-  // Get the TLDs for both ecosystems
   const icannTlds = getTldInfo("ICANN");
   const hnsTlds = getTldInfo("HNS");
 
-  // Extract the TLD from the domain
   const domainTld = domain.split(".").pop()?.toLowerCase();
 
-  // Check if the domain is an ICANN TLD
   const isIcannTld = icannTlds.includes(domainTld || "");
 
-  // Check domain availability in both ecosystems
   const icannAvailable = !isIcannTld && mockDomainAvailability(domain);
 
   let hnsAvailable = false;
   try {
-    // Fetch the HNS domain data
     await fetchHnsDomainData(domain);
   } catch (error) {
     if (error instanceof Error) {
-      // If the error is related to fetching HNS domain data, set the HNS availability to true if the domain is not in ICANN
       hnsAvailable = !isIcannTld;
     } else {
       res.status(500).json({ error: "Error fetching HNS domain data" });
@@ -76,12 +69,10 @@ app.get("/api/domain/availability", async (req, res) => {
   });
 });
 
-// Updated HNS domain data endpoint
 app.get("/api/hns/domain/:name", async (req, res) => {
   const name = req.params.name.toLowerCase();
 
   try {
-    // Use the fetchHnsDomainData function
     const hnsDomainData = await fetchHnsDomainData(name);
 
     res.json(hnsDomainData);
