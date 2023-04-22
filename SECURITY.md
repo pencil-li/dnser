@@ -7,6 +7,18 @@
 | v18.16.0   | :white_check_mark: |
 | v18.15.0   | :white_check_mark: |
 
+## OS Supported Versions
+
+| Version               | Supported          |
+| --------------------- | ------------------ |
+| Arch Linux            | :white_check_mark: |
+| Ubuntu 22.04.1 LTS    | :white_check_mark: |
+| Ubuntu 21.04.1 LTS    | :white_check_mark: |
+| Windows 11 2022       | :white_check_mark: |
+| Windows 11 2023 April | :white_check_mark: |
+| macOS 2022            | :white_check_mark: |
+| macOS 2023 April      | :white_check_mark: |
+
 ## Coolify Supported Version
 
 | Version | Supported          |

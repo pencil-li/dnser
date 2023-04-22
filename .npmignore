@@ -3,3 +3,5 @@ package-lock.json
 test
 do.sh
 lib
+Info.md
+docker.sh
