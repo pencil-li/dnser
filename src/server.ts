@@ -63,10 +63,16 @@ const printCharacter = (sentence: string) => {
   console.log(colorize(createRoundedBox(sentence, sentence.length + 4, 3), 36));
 };
 
-const printLoadingBar = (color: number) => {
-  const bar = "█".repeat(20);
-  console.log(colorize(bar, color));
+const printLoadingBar = (offset: number) => {
+  const colors = [31, 33, 32, 36, 34, 35];
+  const barLength = 20;
+  const bar = Array(barLength)
+    .fill("█")
+    .map((char, index) => colorize(char, colors[(index + offset) % colors.length]))
+    .join("");
+  console.log(bar);
 };
+
 
 app.listen(port, () => {
   clearConsole();
