@@ -16,7 +16,7 @@ Thanks to public DNS resolvers, you can fetch any TLD from Handshake at lightspe
 
  - https://api-dnser.pencil.li/api/tld/icann
 
-### Fetch any DNS resolver of HNS
+### Get the DNS resolver of any HNS TLD
 
  - https://api-dnser.pencil.li/api/dns/hns
 
