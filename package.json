@@ -1,6 +1,6 @@
 {
   "name": "dnser",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Dnser is a package for working with top-level domains.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
