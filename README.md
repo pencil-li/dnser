@@ -1,6 +1,10 @@
 # DNSer
 
-List for resolver any TLDs from Handshake to ICANN, now with the official Pencil Domains API.
+DNSer is a decentralized and universal Top-Level Domain (TLD) checker that allows users to obtain information about both ICANN and Handshake TLDs. With DNSer, you can easily fetch the availability, status, and WHOIS information of TLDs. The tool is designed for seamless integration with various frameworks such as NextJS, Svelte, Nuxt, Vue, React, Deno, and more. It can be used on different platforms, including CLI, browsers, and mobile devices.
+
+DNSer offers a live API for Handshake TLDs (https://api-dnser.pencil.li/api/tld/hns) and ICANN TLDs (https://api-dnser.pencil.li/api/tld/icann). It is also available on Docker and can be integrated with NPM. DNSer is open source and hosted on GitHub, allowing you to submit a PR to add your TLDs to the list.
+
+The main code snippet provided demonstrates how to fetch Handshake domain data using axios, a popular promise-based HTTP client for JavaScript. The function fetchHnsDomainData takes a domain name as input and makes multiple API calls to gather various domain-related information. The fetched data is then combined and returned as a single object.
 
 ## Fetch any TLD from HNS at lightspeed
 
