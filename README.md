@@ -1,5 +1,7 @@
 # DNSer
 
+DNSer is a decentralized universal Top-Level Domain checker that allows users to obtain information
+
 DNSer is a decentralized and universal Top-Level Domain (TLD) checker that allows users to obtain information about both ICANN and Handshake TLDs. With DNSer, you can easily fetch the availability, status, and WHOIS information of TLDs. The tool is designed for seamless integration with various frameworks such as NextJS, Svelte, Nuxt, Vue, React, Deno, and more. It can be used on different platforms, including CLI, browsers, and mobile devices.
 
 DNSer offers a live API for Handshake TLDs (https://api-dnser.pencil.li/api/tld/hns) and ICANN TLDs (https://api-dnser.pencil.li/api/tld/icann). It is also available on Docker and can be integrated with NPM. DNSer is open source and hosted on GitHub, allowing you to submit a PR to add your TLDs to the list.
